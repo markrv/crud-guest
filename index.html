@@ -1,0 +1,50 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta http-equiv="content-type" content="text/html" />
+<meta charset="utf-8">
+<meta name="author" content="markdd" />
+<title>Untitled 2</title>
+<script src="ajaxpoisk.js"></script>
+<script src="jquery.min.js"></script>
+<script type='text/javascript'> 
+</script>
+</head>
+
+<body>
+<h1>Форма подписки на новости сайта</h1>
+<form action="addguest.php" method="post">
+    <input type="text" name="g_name" placeholder="Имя">
+    <input type="text" name="g_surname" placeholder="Фамилия">
+    <select id="g_country" name="g_country">
+        <option value="0">Afghanistan</option>
+    </select>
+    <input type="text" name="card" placeholder="Номер карты">
+    <input type="submit" value="Добавить">
+</form>
+
+<form action="addcountry.php" method="post">
+    <input type="text" name="new_countru" placeholder="Новая страна">
+    <input type="submit" value="Добавить">
+</form>
+<form action="delcountry.php" method="post">
+    <select id="g_country" name="g_country">
+        <option value="0">Afghanistan</option>
+    </select>
+    <input type="submit" value="Удалить">
+</form>
+
+<h3 style="text-align:center;">Поиск по сайту AJAX + PHP + MySQL</h3><br />
+ <div style="border:2px solid blue; padding:  50px 0;">
+  <form onsubmit="return false">
+   <fieldset style="width: 300px; margin: 0 auto; ">
+    <legend>Поиск по сайту AJAX + PHP + MySQL</legend>
+      <input onkeyup="searchNum()" id="txtTitle" type="text" name="title" placeholder="Поисковый запрос">    
+    <button onclick="searchNum()">Поиск</button>
+   </fieldset>
+  </form>
+  <ul id="ulResult" style = "list-style: none; text-align: center"></ul>
+ </div>
+<script src="ajaxcontry.js"></script>
+</body>
+</html>
