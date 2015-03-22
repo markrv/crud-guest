@@ -1,19 +1,12 @@
-/*
- * При полной загрузке документа
- */
+/////////////////////////////////вывод всех стран в селект
+//При полной загрузке документа
 $(document).ready(function () {
-    /*
- * Очищаем второй селект с регионами
- * и блокируем его через атрибут disabled
- * туда мы будем класть результат запроса
- */
-        $('#g_country').attr('disabled', true);
-        $('#g_country').html('<option>загрузка...</option>');
-/*
- * url запроса регионов
- */
+//Очищаем селект
+        $('.ccountry').attr('disabled', true);
+        $('.ccountry').html('<option>загрузка...</option>');
+//url запроса регионов
 
-        var url = 'getcontry.php';
+        var url = 'main.php?';
 /*
  * GET'овый AJAX запрос
  * подробнее о синтаксисе читайте
@@ -22,7 +15,7 @@ $(document).ready(function () {
  */
 
         $.get(
-            url,
+            url, {f : "getcontry"},
             function (result) {
                 if (result.type == 'error') {
                     alert('error');
@@ -40,10 +33,12 @@ $(document).ready(function () {
 
                         options += '<option value="' + $(this).attr('country_id') + '">' + $(this).attr('country_name') + '</option>';
                     });
-                    $('#g_country').html('<option value="0">- выберите регион -</option>'+options);
-                    $('#g_country').attr('disabled', false);
+                    $('.ccountry').html('<option value="0">- выберите регион -</option>'+options);
+                    $('.ccountry').attr('disabled', false);
                 }
             },
             "json"
         );
 });
+
+
