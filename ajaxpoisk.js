@@ -3,11 +3,10 @@ function searchNum(){
 if ($("#txtf").val().length<4) return;
 //отчистка таблиц!!!!!!!!!!!!!!!
 $('#records_table').html('<tr><th>Имя</th><th>Фамилия</th><th>Карта</th></tr>');
-
 //url запрос 
         var url = 'find.php';
         $.get(
-            url, {s : $('#txtf').val()},
+            url, {func : "first", searchtext : $('#txtf').val()},
             function (result) {
                 if (result.type == 'error') {
                     alert('error');

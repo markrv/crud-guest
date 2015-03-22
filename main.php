@@ -1,19 +1,20 @@
 <?php
 include ('bd.php');
 $func=$_GET["f"];
+
 ///////////////вывод списка стран в селект
 if($func=="getcontry"){ 
 	$connect = connectDB();
 	$regs=mysql_query("SELECT `country_id`, `country_name`  FROM `country`");
- 
+    // $objsql = mysql_fetch_object ( $regs );
 	if ($regs) {
  	   $num = mysql_num_rows($regs);      
  	   $i = 0;
  	   while ($i < $num) {
- 	      $regions[$i] = mysql_fetch_assoc($regs);   
+ 	      $country[$i] = mysql_fetch_assoc($regs);   
  	      $i++;
 	    }     
-	    $result = array('regions'=>$regions);  
+	    $result = array('country'=>$country);  
 	}
 	else {
 		$result = array('type'=>'запрос пустой');
@@ -56,7 +57,7 @@ $connect = connectDB();
   closeDB ($connect);
 }
 
-///////////////удалить записи стрыны в бд
+///////////////удалить записи стрыны в бд!!!!!!!!!!!!!!
 if($func=="delcountry"){
 // 'country_id`, 'country_name'
 	/*  DELETE FROM country WHERE country_id = $country_id
