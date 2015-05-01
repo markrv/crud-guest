@@ -5,47 +5,66 @@
 <meta charset="utf-8">
 <meta name="author" content="markdd" />
 <title>Untitled 2</title>
+<link type="text/css" rel="stylesheet" href="style.css" media="all" />
 <script src="jquery.min.js"></script>
-<script src="ajaxpoisk.js"></script>
-<script src="ajaxcontry.js"></script>
+<script src="main.js"></script>
 <script type='text/javascript'> 
 </script>
 </head>
 
 <body>
-<h1>Форма подписки на новости сайта</h1>
-<form action="main.php?f=addguest" method="post">
-    <input type="text" name="g_name" placeholder="Имя">
-    <input type="text" name="g_surname" placeholder="Фамилия">
-    <select id="g_country" name="g_country" class="ccountry">
+<div class="form_box">
+<fieldset>
+<legend>Добавление гостя</legend>
+<form action="main.php?f=addguest" method="post"  class="rf">
+    <input type="text" class="rfield" name="g_name" placeholder="Имя">
+    <input type="text" class="rfield" name="g_surname" placeholder="Фамилия">
+    <select id="g_country" name="g_country" class="ccountry form_box">
         <option disabled>Ошибка</option>
     </select>
-    <input type="text" name="card" placeholder="Номер карты">
-    <input type="submit" value="Добавить">
+    <input type="text" class="card8" name="g_card" placeholder="Номер карты 8 символов">
+    <input type="submit" value="Добавить" class="btn_submit disabled">
 </form>
-
+</fieldset>
+<fieldset>
+<legend>Редактировать информацию о госте</legend>
+<form action="crud.php" class="rf">
+    <input type="submit" value="Редактировать" class="btn_submit">
+</form>
+</fieldset>
+<fieldset>
+<legend>Добавление страну</legend>
 <form action="main.php?f=addcountry" method="post">
     <input type="text" name="add_countru" placeholder="Новая страна">
-    <input type="submit" value="Добавить">
+    <input type="submit" value="Добавить" class="btn_submit">
 </form>
+</fieldset>
+<fieldset>
+<legend>Удалить информацию о стране</legend>
 <form action="main.php?f=delcountry" method="post">
     <select id="del_country" name="del_country" class="ccountry" disabled>
         <option disabled>Ошибка</option>
     </select>
-    <input type="submit" value="Удалить">
+    <input type="submit" value="Удалить" class="btn_submit">
 </form>
-
+</fieldset>
+<P>В базе 100 записей с запросом ajax или test для теста подгрузки</P>
+<fieldset>
+<legend>Поиск</legend>
 <form onsubmit="return false" method="post">
       <input onkeyup="searchNum()" id="txtf" type="text" name="txtf" placeholder="Поисковый запрос">    
     <button onclick="searchNum()">Поиск</button>
   </form>
-<table id="records_table" border='1'>
-    <tr>
+<table style="margin: 20px auto; width=100%; border: 2px solid #cfcfcf;" id="records_table" border='0'>
+    <tr >
         <th>Имя</th>
         <th>Фамилия</th>
+        <th>Страна</th>
         <th>Карта</th>
     </tr>
 </table>
-
+</fieldset>
+</div>
+<script src="required_fields.js"></script>
 </body>
 </html>

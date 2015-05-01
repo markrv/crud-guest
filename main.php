@@ -2,11 +2,10 @@
 include ('bd.php');
 $func=$_GET["f"];
 
-///////////////вывод списка стран в селект
-if($func=="getcontry"){ 
+if($func=="getcontry"){ ///////////////алгоритм вывода списка стран в селект
 	$connect = connectDB();
 	$regs=mysql_query("SELECT `country_id`, `country_name`  FROM `country`");
-    // $objsql = mysql_fetch_object ( $regs );
+ 
 	if ($regs) {
  	   $num = mysql_num_rows($regs);      
  	   $i = 0;
@@ -17,32 +16,31 @@ if($func=="getcontry"){
 	    $result = array('country'=>$country);  
 	}
 	else {
-		$result = array('type'=>'запрос пустой');
+		$result = array('type'=>'error');
 	}
 	closeDB ($connect);
 	echo json_encode($result); 
 }
 
-///////////////добавлени записи гостя в бд
-if($func=="addguest"){ 
-// 'guest_id`, `guest_name`, `guest_surname`, `guest_country`, 'card' 
+if($func=="addguest"){ ///////////////алгоритм добавления записи гостя в бд
+// 'guest_id`, `guest_name`, `guest_surname`, `guest_country`, 'guest_card' 
 $connect = connectDB();
  $guest_name = $_POST['g_name']; // передаем переменной g_name значение глобального массива POST
  $guest_surname = $_POST['g_surname']; 
  $guest_country = $_POST['g_country'];
- $card = $_POST['card'];
- $sql = 'INSERT INTO guest(guest_id, guest_name, guest_surname, guest_country, card)
- VALUES(NULL, "'.$guest_name.'", "'.$guest_surname.'", "'.$guest_country.'", "'.$card.'");';
+ $gue_card = $_POST['g_card'];
+ $sql = 'INSERT INTO guest(guest_id, guest_name, guest_surname, guest_country, guest_card)
+ VALUES(NULL, "'.$guest_name.'", "'.$guest_surname.'", "'.$guest_country.'", "'.$gue_card.'");';
 // проверка
  if(!mysql_query($sql))
  {echo '<center><p><b>Ошибка при добавлении данных о госте!</b></p></center>';
-	echo $sql;}
- else
- {echo '<center><p><b>Данные о госте добавлены!</b></p></center>';}
-  closeDB ($connect);
+closeDB ($connect);	//echo $sql;
 }
-///////////////добавлени записи стрыны в бд
-if($func=="addcountry"){
+ else
+ {closeDB ($connect); header('Location: index.html');}
+}
+
+if($func=="addcountry"){///////////////добавлени записи стрыны в бд
 // 'country_id`, 'country_name'
 $connect = connectDB();
  $country_name = $_POST['add_countru']; // передаем переменной g_name значение глобального массива POST
@@ -50,15 +48,13 @@ $connect = connectDB();
  VALUES(NULL, "'.$country_name.'");';
 // проверка
  if(!mysql_query($sql))
- {echo '<center><p><b>Ошибка при добавлении данных о стране!</b></p></center>';
-	echo $sql;}
+ {echo '<center><p><b>Ошибка при добавлении данных о стране!</b></p></center>';closeDB ($connect); 
+}
  else
- {echo '<center><p><b>Данные о стране добавлены!</b></p></center>';}
-  closeDB ($connect);
+ {closeDB ($connect);header('Location: index.html'); }
 }
 
-///////////////удалить записи стрыны в бд!!!!!!!!!!!!!!
-if($func=="delcountry"){
+if($func=="delcountry"){///////////////удалить записи стрыны в бд
 // 'country_id`, 'country_name'
 	/*  DELETE FROM country WHERE country_id = $country_id
 		DELETE FROM guest WHERE guest_country LIKE $country_id
@@ -67,13 +63,14 @@ if($func=="delcountry"){
 $connect = connectDB();
  $country_id = $_POST['del_country']; // передаем переменной g_name значение глобального массива POST
  $sql = 'DELETE FROM country 
- WHERE country_id = '.$country_id.'; DELETE FROM guest WHERE guest_country = '.$country_id.';';
+ WHERE country_id = '.$country_id.';';
+ $sql2 = 'DELETE FROM guest WHERE guest_country ='. $country_id.';';
 // проверка
- if(!mysql_query($sql))
+ if(!mysql_query($sql) || !mysql_query($sql2))
  {echo '<center><p><b>Ошибка при удалении данных о стране!</b></p></center>';
-	echo $sql;}
+closeDB ($connect);}
  else
- {echo '<center><p><b>Данные о стране удалены!</b></p></center>';}
-  closeDB ($connect);
+ {closeDB ($connect); header('Location: index.html'); 
+}
 }
 ?>

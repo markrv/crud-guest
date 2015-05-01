@@ -2,7 +2,13 @@
 	HUNDREDS of other stylesheets which work with this class can be found here - http://icant.co.uk/csstablegallery
 	Try a few demos using the style dropdown box for our demo here - http://www.ajaxcrud.com/
 */
-
+body {
+	padding: 0 0 0 0;
+	margin: 0;
+	font: 14px/1.8 Helvetica, Arial;
+	color: #444;
+	background-color: #f3f3f3;
+}
 .paging_links{
 	font-family:Verdana, Arial, Helvetica, sans-serif;
 	font-size:10px;
@@ -12,9 +18,9 @@
 
 .ajaxCRUD {
 	background: #F4F2FD;
-	border-color: #BBB1ED;
+	border-color: #cfcfcf;
 	border-style: solid;
-	border-width: 0px;
+	border-width: 2px;
 	padding:4px;
 	border-collapse:collapse;
 	margin-top:10px;

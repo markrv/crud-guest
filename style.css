@@ -1,0 +1,96 @@
+/* = Общие стили
+************************/
+body {
+	padding: 0 0 0 0;
+	margin: 0;
+	font: 14px/1.8 Helvetica, Arial;
+	color: #444;
+	background-color: #f3f3f3;
+}
+a {text-decoration: none;}
+fieldset {
+margin: 20px auto;   
+border: 2px solid #cfcfcf;
+}
+table, th, td
+{
+background: #F4F2FD;
+border-style:solid #cfcfcf;
+border-width:2px;
+border-collapse:#cfcfcf;;
+padding:2px;
+}
+th 
+{
+height:50px;
+background-color:#eee;
+color:black;
+border-color:#cfcfcf;
+}
+.ts1 
+{
+background-color:#fff;
+}
+button {
+	border: none;
+	width: 180px;
+	text-align: center;
+	background: #07a6e6;
+	font-size: 13px;
+	font-weight: bold;
+	color: #ffffff;
+	cursor: pointer;
+	height: 35px;
+	line-height: 28px;
+	padding: 0;
+}
+
+/* Стили для формы */
+.form_box {
+	width: 830px;
+	margin: 40px auto;
+}
+.form_box input {
+	border: 2px solid #cfcfcf;
+	font-size: 14px;
+	color: #444444;
+	padding: 7px 0px 8px;
+	margin-left: auto;
+    margin-right: auto;
+	width: 260px;
+	margin-bottom: 20px;
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+}
+.form_box select {
+	border: 2px solid #cfcfcf;
+	font-size: 14px;
+	color: #444444;
+	padding: 7px 7px 8px;
+	margin-left: auto;
+    margin-right: auto;
+	width: 260px;
+	transition: all 0.5s;
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	margin-top: 0px;
+  	margin-bottom: 20px;
+}
+.form_box input:focus {
+	outline: none;
+	border-color: #07a6e6;
+}
+.form_box .btn_submit {
+	border: none;
+	width: 180px;
+	text-align: center;
+	background: #07a6e6;
+	font-size: 13px;
+	font-weight: bold;
+	color: #ffffff;
+	cursor: pointer;
+	height: 35px;
+	line-height: 28px;
+	padding: 0;
+}
